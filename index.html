@@ -1,36 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <title>Frontend Mentor | Product preview card component</title>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Product preview card component</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        .fraunces {
+            font-family: "Fraunces", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            font-variation-settings: "SOFT" 0,
+            "WONK" 0;
+        }
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+        .montserrat {
+            font-family: "Montserrat", system-ui;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        *, ::before, ::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --Dark-cyan: hsl(158, 36%, 37%);
+            --Cream: hsl(30, 38%, 92%);
+            --Very-dark-blue: hsl(212, 21%, 14%);
+            --Dark-grayish-blue: hsl(228, 12%, 48%);
+            --White: hsl(0, 0%, 100%);
+        }
+
+        body {
+            background: var(--Cream);
+            font-size: 14px;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        article {
+            display: flex;
+            max-width: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 600px) {
+            article {
+                flex-direction: column;
+                max-width: 345px;
+            }
+
+            .item2 {
+                padding: 12px;
+            }
+        }
+
+        .item1 {
+            flex-basis: 50%;
+        }
+
+        .item2 {
+            background: var(--White);
+            flex-basis: 50%;
+            padding: 32px;
+        }
+
+        @media (max-width: 600px) {
+            .item2 {
+                padding: 25px;
+            }
+        }
+
+        picture {
+            display: block;
+        }
+
+        picture img {
+            display: block;
+            max-width: 100%;
+            block-size: auto;
+        }
+
+        h1 {
+            display: flex;
+            flex-direction: column;
+            gap: 21px 0;
+            margin-bottom: 24px;
+        }
+
+        h1 :first-child {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 400;
+        }
+
+        h1 :last-child {
+            font-size: 32px;
+            max-width: 193px;
+            line-height: 1;
+        }
+
+        @media (max-width: 600px) {
+            h1 :last-child {
+                max-width: 277px;
+            }
+
+            h1 {
+                margin-bottom: 17px;
+                gap: 13px 0;
+                /*margin-bottom: 24px;*/
+            }
+        }
+
+        .item2 p:nth-child(2) {
+            color: var(--Dark-grayish-blue);
+            font-weight: 500;
+            line-height: 1.65;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 600px) {
+            .item2 p:nth-child(2) {
+                margin-bottom: 19px;
+            }
+        }
+
+        .item2 p:nth-child(3) {
+            display: flex;
+            align-items: center;
+            gap: 0 19px;
+            color: var(--Dark-grayish-blue);
+            font-weight: 500;
+            margin-bottom: 26px;
+        }
+
+        @media (max-width: 600px) {
+            .item2 p:nth-child(3) {
+                margin-bottom: 16px;
+            }
+        }
+
+        .item2 p:nth-child(3) :first-child {
+            font-size: 32px;
+            color: var(--Dark-cyan);
+        }
+
+        .item2 p:nth-child(3) :last-child {
+            font-size: 13px;
+            text-decoration: line-through;
+        }
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0 11px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            background: var(--Dark-cyan);
+            padding: 16px;
+            cursor: pointer;
+            transition: background-color .5s linear;
+        }
+
+        button :last-child {
+            color: var(--White);
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        button:hover {
+            background: var(--Very-dark-blue);
+        }
+    </style>
 </head>
-<body>
+<body class="montserrat">
 
-  Perfume
+<main>
+    <article>
+        <div class="item1">
+            <picture>
+                <source media="(max-width: 600px)" srcset="images/image-product-mobile.jpg">
+                <img src="images/image-product-desktop.jpg" height="900" width="600" alt="perfume from chanel"/>
+            </picture>
+        </div>
+        <div class="item2">
+            <h1>
+                <span>Perfume</span>
+                <span class="fraunces">Gabrielle Essence Eau De Parfum</span>
+            </h1>
+            <p>A floral, solar and voluptuous interpretation composed by Olivier Polge,
+                Perfumer-Creator for the House of CHANEL.</p>
+            <p><span class="fraunces">$149.99</span><span>$169.99</span></p>
+            <button><span><img style="display: block" aria-hidden="true" src="images/icon-cart.svg" alt="basket"></span><span>Add to Cart</span>
+            </button>
+        </div>
+    </article>
+</main>
 
-  Gabrielle Essence Eau De Parfum
-
-  A floral, solar and voluptuous interpretation composed by Olivier Polge, 
-  Perfumer-Creator for the House of CHANEL.
-
-  $149.99
-  $169.99
-
-  Add to Cart
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
 </body>
 </html>
